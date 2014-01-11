@@ -4,11 +4,13 @@
 A parser for openpetition.org. Download file of a given petition
 and parses the html file.
 
-Example:
+Usage:
 
-$ python openpetitionparser.py download https://www.openpetition.de/petition/unterzeichner/zukunft-verantwortung-lernen-kein-bildungsplan-2015-unter-der-ideologie-des-regenbogens 94
+$ python openpetitionparser.py download https://www.openpetition.de/petition/unterzeichner/a_petition 50
 
 $ python openpetitionparser.py json
+
+$ python openpetitionparser.py csv
 
 Copyright (c) 2014, Konrad Foerstner <konrad@foerstner.org>
     
