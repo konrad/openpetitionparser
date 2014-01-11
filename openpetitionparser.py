@@ -69,6 +69,16 @@ def get_args():
         "--output_json", default="openpetition.json", help="Output file. "
         "Default is 'openpetition.json'.")
     json_arg_parser.set_defaults(func=parse_and_create_json)
+    csv_arg_parser = arg_subparsers.add_parser(
+        "csv", help="Convert JSON to CSV")
+    csv_arg_parser.add_argument(
+        "--input_json", default="openpetition.json", help="Input JSON file. "
+        "Default is 'openpetition.json'.")
+    csv_arg_parser.add_argument(
+        "--output_csv", default="openpetition.csv", 
+        help="Output CSV (tab seperated) file. "
+        "Default is 'openpetition.json'.")
+    csv_arg_parser.set_defaults(func=create_csv)
     args = arg_parser.parse_args()
     if "func" in dir(args):
         return args
@@ -114,6 +124,17 @@ def _clean_location(location):
     location = location.replace(":", "") 
     location = location.strip()
     return(location)
+    
+def create_csv(args):
+    locations_and_supporters = json.load(open(args.input_json))
+    with open(args.output_csv, "w") as output_file:
+        output_file.write("\t".join(["#Country", "City", "Supporter"]) + "\n")
+        for country in sorted(locations_and_supporters.keys()):
+            for city in sorted(locations_and_supporters[country].keys()):
+                for supporter in sorted(
+                        locations_and_supporters[country][city]):
+                    output_file.write(
+                        "\t".join([country, city, supporter]) + "\n")
                     
 if __name__ == "__main__": 
     main()
