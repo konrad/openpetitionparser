@@ -1,11 +1,16 @@
 This is a rather simplistic tool to extract data from openpetition.org.
 
+***You may not need this tool! After publishing this tool I was
+contacted by openpetition.org. They are very happy to provide the data
+in different formats.***
+
 It will help to dowload supporter list pages, parse them and store the
 data for further analysis in JSON format.
 
 Example:
 
-$ python openpetitionparser.py download https://www.openpetition.de/petition/unterzeichner/my_test_peptition 94
+$ URL=https://www.openpetition.de/petition/unterzeichner/BLUBLUBLUB 
+$ python openpetitionparser.py download $URL 94
 
 This generates a folder called "openpetition" and downloads the pages
 of the supporter list. Important - currently you have to give the
